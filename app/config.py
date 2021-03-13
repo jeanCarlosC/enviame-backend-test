@@ -25,7 +25,7 @@ class TestingConfig(Config):
     """
     Testing configurations 
     """
-    SQLALCHEMY_DATABASE_URI = "mysql+pymysql://jean:12345@dbmysql:3306/db"
+    SQLALCHEMY_DATABASE_URI = "mysql+pymysql://enviame:enviame12345@dbmysql:3306/db"
     SQLALCHEMY_POOL_RECYCLE = 200
     DEBUG = True
     TESTING = True
