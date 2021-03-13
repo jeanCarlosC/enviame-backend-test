@@ -1,0 +1,37 @@
+version: '2'
+services:
+  datos_enviame:
+    image: busybox
+    volumes:
+      - ./:/app
+  enviame:
+    build:
+      context: ./docker
+    volumes_from:
+      - datos_enviame
+    ports:
+        - "5000:5000"
+    expose:
+      - "5000"
+    external_links:
+      - redis:redis
+    depends_on:
+      - datos_enviame
+      - dbmysql
+  dbmysql:
+    image: mysql:5.7
+    restart: always
+    hostname: dbmysql
+    environment:
+      MYSQL_DATABASE: 'db'
+      MYSQL_USER: 'enviame'
+      MYSQL_PASSWORD: 'enviame12345'
+      MYSQL_ROOT_PASSWORD: 'root12345'
+    ports:
+      - '8084:3306'
+    expose:
+      - '8084'
+    volumes:
+      - my-db:/var/lib/mysql
+volumes:
+  my-db:
