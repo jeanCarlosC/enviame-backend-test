@@ -10,29 +10,25 @@ class DevelopmentConfig(Config):
     """
     Development configurations 
     """
-    SQLALCHEMY_DATABASE_URI = "mysql+pymysql://enviame:enviame12345@dbmysql:3306/db"
-    SQLALCHEMY_POOL_RECYCLE = 200
+    SQLALCHEMY_DATABASE_URI = "mysql+pymysql://root:root12345@dbmysql:3306/db"
+    JSON_AS_ASCII = False
     DEBUG = True
     TESTING = True
     SQLALCHEMY_ECHO = True
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    PATH_STORAGE = "/app/upload"
-    ROOT_PATH = "/app"
     TIME_SESSION = 60000
-    SQLALCHEMY_POOL_RECYCLE=160
+    SQLALCHEMY_POOL_RECYCLE = 160
 
 class TestingConfig(Config):
     """
     Testing configurations 
     """
     SQLALCHEMY_DATABASE_URI = "mysql+pymysql://enviame:enviame12345@dbmysql:3306/db"
-    SQLALCHEMY_POOL_RECYCLE = 200
+    JSON_AS_ASCII = False
     DEBUG = True
     TESTING = True
     SQLALCHEMY_ECHO = True
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    PATH_STORAGE = "/app/upload"
-    ROOT_PATH = "/app"
     TIME_SESSION = 60000
     SQLALCHEMY_POOL_RECYCLE=160
     
@@ -44,12 +40,9 @@ class ProductionConfig(Config):
     Production configurations
     """
     SQLALCHEMY_DATABASE_URI = ""
-    DEBUG = True
-    TESTING = False
+    JSON_AS_ASCII = False
     SQLALCHEMY_ECHO = False
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    PATH_STORAGE = "/app/upload"
-    ROOT_PATH = "/app"
     TIME_SESSION = 60000
     SQLALCHEMY_POOL_RECYCLE=160
     

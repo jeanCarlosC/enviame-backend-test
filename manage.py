@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from flask_script import Manager
-from app.app import app,db
+from aplication.app import app,db
 
 manager = Manager(app)
-app.config['DEBUG'] = True # Ensure debugger will load.
+aplication.config['DEBUG'] = True # Ensure debugger will load.
 
 @manager.command
 def create_tables():
