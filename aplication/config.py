@@ -17,14 +17,13 @@ class DevelopmentConfig(Config):
     SQLALCHEMY_ECHO = True
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     TIME_SESSION = 60000
-    SQLALCHEMY_POOL_RECYCLE=160
+    SQLALCHEMY_POOL_RECYCLE = 160
 
 class TestingConfig(Config):
     """
     Testing configurations 
     """
     SQLALCHEMY_DATABASE_URI = "mysql+pymysql://enviame:enviame12345@dbmysql:3306/db"
-    SQLALCHEMY_POOL_RECYCLE = 200
     JSON_AS_ASCII = False
     DEBUG = True
     TESTING = True
