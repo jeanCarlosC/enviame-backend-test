@@ -13,6 +13,8 @@ import string
 import random
 import json
 import math
+from functools import reduce
+from math import sqrt
 class Utilities():
     @staticmethod
     def response_services(status, code, message,data = None):
@@ -305,3 +307,74 @@ class Utilities():
             n+=1
         print(arrayFib)
         return days_delivery
+    
+    @staticmethod
+    def fibonacciDivisors(limit_divisors):
+        arrayFib = [0,1]
+        n = 2
+        while True:
+            fibonacci = arrayFib[n-1] + arrayFib[n-2]
+            arrayFib.append(fibonacci)
+            divisors = Utilities.divisors(fibonacci)
+            if len(divisors) > limit_divisors:
+                break
+            n+=1
+        return fibonacci
+    
+    ##############################################################
+    ### cartesian product of lists ##################################
+    ##############################################################
+    @staticmethod
+    def appendEs2Sequences(sequences,es):
+        result=[]
+        if not sequences:
+            for e in es:
+                result.append([e])
+        else:
+            for e in es:
+                result+=[seq+[e] for seq in sequences]
+        return result
+
+    @staticmethod
+    def cartesianproduct(lists):
+        return reduce(Utilities.appendEs2Sequences,lists,[])
+
+    ##############################################################
+    ### prime factors of a natural ##################################
+    ##############################################################
+    @staticmethod
+    def primefactors(n):
+        i = 2
+        while i<=sqrt(n):
+            if n%i==0:
+                l = Utilities.primefactors(n/i)
+                l.append(i)
+                return l
+            i+=1
+        return [n]
+
+
+    ##############################################################
+    ### factorization of a natural ##################################
+    ##############################################################
+    @staticmethod
+    def factorGenerator(n):
+        p = Utilities.primefactors(n)
+        factors={}
+        for p1 in p:
+            try:
+                factors[p1]+=1
+            except KeyError:
+                factors[p1]=1
+        return factors
+    
+    @staticmethod
+    def divisors(n):
+        factors = Utilities.factorGenerator(n)
+        divisors=[]
+        listexponents=[map(lambda x:k**x,range(0,factors[k]+1)) for k in factors.keys()]
+        listfactors=Utilities.cartesianproduct(listexponents)
+        for f in listfactors:
+            divisors.append(reduce(lambda x, y: x*y, f, 1))
+        divisors.sort()
+        return divisors

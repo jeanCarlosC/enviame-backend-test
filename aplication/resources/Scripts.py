@@ -133,3 +133,20 @@ class DeliveryTimeCalculationResource(Resource):
             msj = 'Error: '+ str(exc_obj) + ' File: ' + fname +' linea: '+ str(exc_tb.tb_lineno)
             print(str(msj))
             return Utilities.response_services(False,500,"An unexpected error has occurred")
+class FibonacciDivisorsResource(Resource):
+    def get(self):
+        parser = reqparse.RequestParser()
+        parser.add_argument('divisors',
+            type=int,
+            required=False
+        )
+        params = parser.parse_args()
+        try:
+            limit_divisors = 1000 if params["divisors"] is None else params["divisors"]
+            return Utilities.response_services(True,200,"The first number in the fibonacci sequence with more than "+str(limit_divisors)+" divisors is : "+str(Utilities.fibonacciDivisors(limit_divisors)))
+        except Exception as e:
+            exc_type, exc_obj, exc_tb = sys.exc_info()
+            fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
+            msj = 'Error: '+ str(exc_obj) + ' File: ' + fname +' linea: '+ str(exc_tb.tb_lineno)
+            print(str(msj))
+            return Utilities.response_services(False,500,"An unexpected error has occurred")
