@@ -11,6 +11,9 @@ class DevelopmentConfig(Config):
     Development configurations 
     """
     SQLALCHEMY_DATABASE_URI = "mysql+pymysql://root:root12345@dbmysql:3306/db"
+    URLS_ENVIAME = {
+        'create_delivery': 'https://stage.api.enviame.io/api/s2/v2/companies/401/deliveries'
+    }
     JSON_AS_ASCII = False
     DEBUG = True
     TESTING = True
@@ -24,6 +27,9 @@ class TestingConfig(Config):
     Testing configurations 
     """
     SQLALCHEMY_DATABASE_URI = "mysql+pymysql://enviame:enviame12345@dbmysql:3306/db"
+    URLS_ENVIAME = {
+        'create_delivery': 'https://stage.api.enviame.io/api/s2/v2/companies/401/deliveries'
+    }
     JSON_AS_ASCII = False
     DEBUG = True
     TESTING = True

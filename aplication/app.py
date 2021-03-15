@@ -17,7 +17,7 @@ from aplication.helpers.Utilities import Utilities
 
 # Import resources
 from aplication.resources.CompanyMaintainer import CompaniesViewResource, CompanyViewResource, CompanyCreateResource, CompanyUpdateResource, CompanyDeleteResource
-from aplication.resources.Scripts import loadFakerCompaniesResource, PalindromoScriptResource
+from aplication.resources.Scripts import loadFakerCompaniesResource, PalindromoScriptResource, EnviameResource
 
 
 # Flask initialization
@@ -46,6 +46,7 @@ api.add_resource(CompanyDeleteResource, '/company/delete/<int:_id>')
 # Endpoints scripts
 api.add_resource(loadFakerCompaniesResource, '/scripts/fakeCompanies')
 api.add_resource(PalindromoScriptResource, '/scripts/palindrome')
+api.add_resource(EnviameResource, '/scripts/createDelivery')
 
 @app.route('/', methods=['GET'] )
 def welcome():
