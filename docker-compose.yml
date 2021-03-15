@@ -33,5 +33,6 @@ services:
       - '8084'
     volumes:
       - my-db:/var/lib/mysql
+      - "./tables.sql:/docker-entrypoint-initdb.d/1.sql"
 volumes:
   my-db:
