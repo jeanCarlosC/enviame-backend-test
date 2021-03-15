@@ -92,7 +92,7 @@ En caso de error el atributo data no viene en la respuesta.
 http://localhost:5000/palindrome
 Method : GET
 
-en caso de querer probar otra cadena puedes enviar el parametro string con el texto
+Servicio con el cual llamo el script para evaluar los substring palindromos dentro de la cadena texto dada, en caso de querer probar otra cadena puedes enviar el parametro "string" con el texto
 
 # Ejercicio 4
 
@@ -102,8 +102,14 @@ Method : POST
 servicio el cual consume servicio de enviame y guarda la respuesta en una tabla log dentro del contenedor mysql
 
 # Ejercicio 5
+http://localhost:5000/scripts/DeliveryTime
+Method : GET
+
+Servicio con el cual llamo el script para conocer el numeros de dias de entrega de una compra online, basado en la secuencia fibonacci
+cada vez que se hace el consumo, se llama el escript con un numero aleatorio de 0 a 2000, en caso de que se quisiera evaluar una distancia especifica, podrías enviar el parametro "km" con el numero de kilometros a evaluar.
 
 # Ejercicio 6
+Flatante
 
 # Ejercicio 7
 
