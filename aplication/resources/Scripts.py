@@ -3,15 +3,18 @@
 import sys
 import os
 import json
+import requests
 from flask import Flask, request, jsonify, redirect
 from flask_restful import Resource, reqparse
 from flask import Flask, request, jsonify, render_template, send_from_directory
 from datetime import date, datetime
 from faker import Faker
+from aplication.app import app_config, enviroment
 
 from aplication.helpers.Utilities import Utilities
 
 from aplication.models.Company import Company
+from aplication.models.LogsEnviame import LogsEnviame
 
 class loadFakerCompaniesResource(Resource):
     def get(self):
@@ -62,6 +65,47 @@ class PalindromoScriptResource(Resource):
         try:
             string = "afoolishconsistencyisthehobgoblinoflittlemindsadoredbylittlestatesmenandphilosophersanddivineswithconsistencyagreatsoulhassimplynothingtodohemayaswellconcernhimselfwithhisshadowonthewallspeakwhatyouthinknowinhardwordsandtomorrowspeakwhattomorrowthinksinhardwordsagainthoughitcontradicteverythingyousaidtodayahsoyoushallbesuretobemisunderstoodisitsobadthentobemisunderstoodpythagoraswasmisunderstoodandsocratesandjesusandlutherandcopernicusandgalileoandnewtonandeverypureandwisespiritthatevertookfleshtobegreatistobemisunderstood" if params["string"] is None else params["string"]
             return Utilities.getPalindromesFromString(string)
+        except Exception as e:
+            exc_type, exc_obj, exc_tb = sys.exc_info()
+            fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
+            msj = 'Error: '+ str(exc_obj) + ' File: ' + fname +' linea: '+ str(exc_tb.tb_lineno)
+            print(str(msj))
+            return Utilities.response_services(False,500,"An unexpected error has occurred")
+
+class EnviameResource(Resource):
+    def post(self):
+        try:
+            payload = Utilities.get_json_create_delivery()
+            url = app_config[enviroment].URLS_ENVIAME["create_delivery"]
+            print(url)
+            headers = {'Accept':'application/json', 'Content-Type':'application/json', 'api-key':'ea670047974b650bbcba5dd759baf1ed'}
+            data_inser_log = {
+                'name':'create_delivery',
+                'status':0,
+                'payload':json.dumps({
+                    'headers':headers,
+                    'payload':payload
+                })
+            }
+            data_insert = LogsEnviame.insert_data(data_inser_log)
+            r = requests.post(url, data = json.dumps(payload), headers= headers)
+            if r.status_code == 201:
+                rs = json.loads(r.text)
+                data_update_log = {
+                    'response':json.dumps(rs),
+                    'status':1
+                }
+                data_update = LogsEnviame.update_data(data_insert['id'],data_update_log)
+                return Utilities.response_services(True,201,"Delivery created successfully",data_update)
+            else:
+                rs = json.loads(r.text)
+                data_update_log = {
+                    'response':json.dumps(rs),
+                    'status':2
+                }
+                data_update = LogsEnviame.update_data(data_insert['id'],data_update_log)
+                return Utilities.response_services(False,500,"An error occurred while inserting the delivery")
+            
         except Exception as e:
             exc_type, exc_obj, exc_tb = sys.exc_info()
             fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
