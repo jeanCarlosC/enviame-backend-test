@@ -62,8 +62,10 @@ body : {
 	"identification":"1231234",
 	"name":"Emviame SPA",
 	"address": "Manquehue 105, las condes, santiago de chile",
-	"mail":"contact@enviame.io"
+	"mail":"contact@enviame.io",
+	"phone":99887766
 }
+Los datos mail y phone son opcionales
 
 # Servicio para editar una compañía
 
