@@ -26,10 +26,10 @@ Los datos de acceso de la base de datos (configurables en el archivo docker-comp
 
 
 # Ejercicio 1
-1. Desde la consola posicionarte en la raiz del proyecto
-2. Ejecutar el docker compose con la siguiente linea de comando docker-compose up --build, esperar que se instalen las dependencias y que se inicializen ambos contenedores. en caso de querer iniciar como demonio y no deje tomada la consola, agregar el parametro -d en la linea de comando : docker-compose up -d --build
+1. Desde la consola posicionarte en la raíz del proyecto
+2. Ejecutar el docker compose con la siguiente línea de comando docker-compose up --build, esperar que se instalen las dependencias y que se inicializen ambos contenedores. en caso de querer iniciar como demonio y no deje tomada la consola, agregar el parámetro -d en la línea de comando : docker-compose up -d --build
 
-En el archivo docker-compose se encuentra toda la condiguración para el levantamiento de los contenedores "enviame" para la aplicación y dbmysql para la base de datos mysql
+En el archivo docker-compose se encuentra toda la configuración para el levantamiento de los contenedores "enviame" para la aplicación y dbmysql para la base de datos mysql
 
 # Ejercicio 2
 
@@ -37,21 +37,21 @@ Al ejecutar los contenedores docker tendremos disponible en los servicios para e
 
 URL development : http://localhost:5000/
 
-# Servicio para crear compañias faker
+# Servicio para crear compañías faker
 http://localhost:5000/scripts/fakeCompanies
 Method : GET
 
-se debe enviar el parametro "quantity" que será la cantidad de compañias faker que creará 
+se debe enviar el parámetro "quantity" que será la cantidad de compañías faker que creará 
 
-# Servicio para listar todas las compañias
+# Servicio para listar todas las compañías
 http://localhost:5000/companies
 Method : GET
 
-# Servicio para obtener una compañia en base al id
+# Servicio para obtener una compañía en base al id
 http://localhost:5000/company/1
 Method : GET
 
-# Servicio para crear una compañia
+# Servicio para crear una compañía
 
 http://localhost:5000/company/create
 Method: POST
@@ -65,7 +65,7 @@ body : {
 	"mail":"contact@enviame.io"
 }
 
-# Servicio para editar una compañia
+# Servicio para editar una compañía
 
 http://localhost:5000/company/create
 Headers: {
@@ -77,9 +77,9 @@ body : {
 	"address": "Manquehue 105, las condes, santiago de chile",
 	"mail":"contact@enviame.io"
 }
-Los datos son opcionales excepto la identificacion
+Los datos son opcionales excepto la identificación
 
-# Servicio para eliminar una compañia
+# Servicio para eliminar una compañía
 
 http://localhost:5000/company/delete/1
 
@@ -98,7 +98,7 @@ En caso de error el atributo data no viene en la respuesta.
 http://localhost:5000/palindrome
 Method : GET
 
-Servicio con el cual llamo el script para evaluar los substring palindromos dentro de la cadena texto dada, en caso de querer probar otra cadena puedes enviar el parametro "string" con el texto
+Servicio con el cual llamo el script para evaluar los substring palíndromos dentro de la cadena texto dada, en caso de querer probar otra cadena puedes enviar el parámetro "string" con el texto
 
 # Ejercicio 4
 
@@ -111,8 +111,8 @@ servicio el cual consume servicio de enviame y guarda la respuesta en una tabla 
 http://localhost:5000/scripts/DeliveryTime
 Method : GET
 
-Servicio con el cual llamo el script para conocer el numeros de dias de entrega de una compra online, basado en la secuencia fibonacci
-cada vez que se hace el consumo, se llama el escript con un numero aleatorio de 0 a 2000, en caso de que se quisiera evaluar una distancia especifica, podrías enviar el parametro "km" con el numero de kilometros a evaluar.
+Servicio con el cual llamo el script para conocer el números de días de entrega de una compra online, basado en la secuencia fibonacci
+cada vez que se hace el consumo, se llama el script con un número aleatorio de 0 a 2000, en caso de que se quisiera evaluar una distancia especifica, podrías enviar el parámetro "km" con el número de kilómetros a evaluar.
 
 # Ejercicio 6
 http://localhost:5000/scripts/FibonacciDivisors
@@ -120,7 +120,7 @@ Method : GET
 
 Servicio con el cual llamo el script para conocer el primer número de la secuencia fibonacci con mas de mil divisores.
 
-En caso de querer probrar con otro limite de divisores enviar el parametro "divisors"
+En caso de querer probrar con otro límite de divisores enviar el parámetro "divisors"
 
 # Ejercicio 7
 
@@ -134,4 +134,4 @@ SET employees.salary = employees.salary + round((continents.anual_adjustment/100
 WHERE employees.salary <= 5000;
 SET SQL_SAFE_UPDATES = 0;
 
-Donde se inabilita el safe_update para ejecutar el update y luego se habilita nuevamente.
+Donde se inhabilita el safe_update para ejecutar el update y luego se habilita nuevamente.
