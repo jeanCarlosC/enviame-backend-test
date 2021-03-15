@@ -92,9 +92,14 @@ En caso de error el atributo data no viene en la respuesta.
 http://localhost:5000/palindrome
 Method : GET
 
-en caso de querer probar otra cadena puedes enviar el parametro string con la cadena
+en caso de querer probar otra cadena puedes enviar el parametro string con el texto
 
 # Ejercicio 4
+
+http://localhost:5000/scripts/createDelivery
+Method : POST
+
+servicio el cual consume servicio de enviame y guarda la respuesta en una tabla log dentro del contenedor mysql
 
 # Ejercicio 5
 
