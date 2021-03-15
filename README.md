@@ -6,7 +6,7 @@ Todos los ejercicios fueron desarrollados bajo el lenguaje de PYTHON junto con e
 
 Para el ambiente de desarrollo se utilizaron 2 contenedores, 1 para levantar la aplicación con python flask y otro para el manejo de la base de datos mysql
 
-Se manejaron 2 volumenes para la persistencia de datos para la aplicación (datos_enviame) y nuestra base de datos (dbmysql).
+Se manejaron 2 volúmenes para la persistencia de datos para la aplicación (datos_enviame) y nuestra base de datos (dbmysql).
 
 Con la siguiente url http://localhost:5000 o http://127.0.0.1:5000 se tendrá acceso a los servicios y scripts 
 
