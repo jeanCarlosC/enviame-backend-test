@@ -17,7 +17,7 @@ from aplication.helpers.Utilities import Utilities
 
 # Import resources
 from aplication.resources.CompanyMaintainer import CompaniesViewResource, CompanyViewResource, CompanyCreateResource, CompanyUpdateResource, CompanyDeleteResource
-from aplication.resources.Scripts import loadFakerCompaniesResource, PalindromoScriptResource, EnviameResource
+from aplication.resources.Scripts import loadFakerCompaniesResource, PalindromoScriptResource, EnviameResource, DeliveryTimeCalculationResource
 
 
 # Flask initialization
@@ -47,12 +47,13 @@ api.add_resource(CompanyDeleteResource, '/company/delete/<int:_id>')
 api.add_resource(loadFakerCompaniesResource, '/scripts/fakeCompanies')
 api.add_resource(PalindromoScriptResource, '/scripts/palindrome')
 api.add_resource(EnviameResource, '/scripts/createDelivery')
+api.add_resource(DeliveryTimeCalculationResource, '/scripts/DeliveryTime')
 
 @app.route('/', methods=['GET'] )
 def welcome():
     return {
         "Status":"OK",
-        "message":"Welcome to python Flask"
+        "message":"Welcome to python Flask",
     }, 200
 
 # The application starts

@@ -4,6 +4,7 @@ import sys
 import os
 import json
 import requests
+from random import randint
 from flask import Flask, request, jsonify, redirect
 from flask_restful import Resource, reqparse
 from flask import Flask, request, jsonify, render_template, send_from_directory
@@ -106,6 +107,26 @@ class EnviameResource(Resource):
                 data_update = LogsEnviame.update_data(data_insert['id'],data_update_log)
                 return Utilities.response_services(False,500,"An error occurred while inserting the delivery")
             
+        except Exception as e:
+            exc_type, exc_obj, exc_tb = sys.exc_info()
+            fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
+            msj = 'Error: '+ str(exc_obj) + ' File: ' + fname +' linea: '+ str(exc_tb.tb_lineno)
+            print(str(msj))
+            return Utilities.response_services(False,500,"An unexpected error has occurred")
+
+class DeliveryTimeCalculationResource(Resource):
+    def get(self):
+        parser = reqparse.RequestParser()
+        parser.add_argument('km',
+            type=int,
+            required=False
+        )
+        params = parser.parse_args()
+        try:
+            km = randint(0, 2000) if params["km"] is None else params["km"]
+            days = Utilities.fibonacciDelivery(km)
+            message = "time for delivery for a distance of "+str(km)+" km is " + str(days) + " days"
+            return Utilities.response_services(True,200,message)
         except Exception as e:
             exc_type, exc_obj, exc_tb = sys.exc_info()
             fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]

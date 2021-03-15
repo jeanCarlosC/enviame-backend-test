@@ -282,3 +282,26 @@ class Utilities():
                     "tracking_number": ""
                 }
             }
+    
+    @staticmethod
+    def fibonacciDelivery(km):
+        arrayFib = [0,1]
+        days_delivery = 0
+        print("N 0 rango : 0 - 100 dias 0")
+        if km < 100:
+            return 0
+        if km < 200 and km >= 100:
+            return 1
+        print("N 1 rango : 100 - 200 dias 1")
+        n = 2
+        while True:
+            days_delivery = arrayFib[n-1] + arrayFib[n-2]
+            arrayFib.append(days_delivery)
+            max_range = (n + 1) * 100
+            min_range = ((n + 1) * 100) - 100
+            print("N "+str(n) + " rango :" +str(min_range)+" - "+str(max_range)+" dias "+str(days_delivery))
+            if km >= min_range and km < max_range:
+                break
+            n+=1
+        print(arrayFib)
+        return days_delivery
