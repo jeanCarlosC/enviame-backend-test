@@ -15,6 +15,9 @@ import json
 import math
 from functools import reduce
 from math import sqrt
+
+from aplication.app import app_config, enviroment
+
 class Utilities():
     @staticmethod
     def response_services(status, code, message,data = None):
@@ -378,3 +381,12 @@ class Utilities():
             divisors.append(reduce(lambda x, y: x*y, f, 1))
         divisors.sort()
         return divisors
+    
+    @staticmethod
+    def isTokenIntegration(token):
+        exists_token = False
+        for key in app_config[enviroment].TOKENS:
+            if app_config[enviroment].TOKENS[key] == token:
+                exists_token = True
+                break
+        return exists_token

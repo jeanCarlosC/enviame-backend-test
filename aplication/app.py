@@ -4,7 +4,7 @@ import click
 from aplication.enviroment import env
 enviroment = env
 
-from flask import Flask
+from flask import Flask, request
 from flask_cors import CORS
 from flask_restful import Api
 
@@ -35,6 +35,15 @@ redis.init_app(app)
 
 #Initialization of api services
 api = Api(app)
+
+@app.before_request
+def verificacion():
+    if request.method != 'OPTIONS' and request.endpoint != "welcome":
+        if request.headers.get('Authorization'):
+            if not Utilities.isTokenIntegration(request.headers.get('Authorization')):
+                return Utilities.response_services(False,403,"Access denied")
+        else:
+            return Utilities.response_services(False,403,"Access denied, send authorization")
 
 # Endpoints company are defined
 api.add_resource(CompaniesViewResource, '/companies')

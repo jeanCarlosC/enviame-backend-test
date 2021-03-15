@@ -71,7 +71,8 @@ Los datos mail y phone son opcionales
 
 # Servicio para editar una compañía
 
-http://localhost:5000/company/create
+http://localhost:5000/company/update
+Method: PUT
 Headers: {
     "Content-Type":"application/json"
 }
@@ -86,7 +87,7 @@ Los datos son opcionales excepto la identificación
 # Servicio para eliminar una compañía
 
 http://localhost:5000/company/delete/1
-
+Method: DELETE
 La estructura de la respuesta para todos los servicios es la siguiente
 
 {
@@ -99,7 +100,7 @@ En caso de error el atributo data no viene en la respuesta.
 
 # Ejercicio 3
 
-http://localhost:5000/palindrome
+http://localhost:5000/scripts/palindrome
 Method : GET
 
 Servicio con el cual llamo el script para evaluar los substring palíndromos dentro de la cadena texto dada, en caso de querer probar otra cadena puedes enviar el parámetro "string" con el texto
