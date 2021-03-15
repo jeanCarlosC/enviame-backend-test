@@ -109,7 +109,12 @@ Servicio con el cual llamo el script para conocer el numeros de dias de entrega 
 cada vez que se hace el consumo, se llama el escript con un numero aleatorio de 0 a 2000, en caso de que se quisiera evaluar una distancia especifica, podrías enviar el parametro "km" con el numero de kilometros a evaluar.
 
 # Ejercicio 6
-Flatante
+http://localhost:5000/scripts/FibonacciDivisors
+Method : GET
+
+Servicio con el cual llamo el script para conocer el primer número de la secuencia fibonacci con mas de mil divisores.
+
+En caso de querer probrar con otro limite de divisores enviar el parametro "divisors"
 
 # Ejercicio 7
 
