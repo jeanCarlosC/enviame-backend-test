@@ -29,6 +29,8 @@ Los datos de acceso de la base de datos (configurables en el archivo docker-comp
 1. Desde la consola posicionarte en la raíz del proyecto
 2. Ejecutar el docker compose con la siguiente línea de comando docker-compose up --build, esperar que se instalen las dependencias y que se inicializen ambos contenedores. en caso de querer iniciar como demonio y no deje tomada la consola, agregar el parámetro -d en la línea de comando : docker-compose up -d --build
 
+y para consultar el estado de los contenedores podrás ejecutar el siguiente comando: "docker ps" y se listaran los contenedores que se encuentren activos
+
 En el archivo docker-compose se encuentra toda la configuración para el levantamiento de los contenedores "enviame" para la aplicación y dbmysql para la base de datos mysql
 
 # Ejercicio 2
