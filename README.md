@@ -106,3 +106,15 @@ servicio el cual consume servicio de enviame y guarda la respuesta en una tabla 
 # Ejercicio 6
 
 # Ejercicio 7
+
+Para este ejercicio contruí la siguiente query:
+
+SET SQL_SAFE_UPDATES = 0;
+update employees 
+join countries on countries.id = employees.country_id
+join continents on continents.id = countries.continent_id
+SET employees.salary = employees.salary + round((continents.anual_adjustment/100) * employees.salary,0)
+WHERE employees.salary <= 5000;
+SET SQL_SAFE_UPDATES = 0;
+
+Donde se inabilita el safe_update para ejecutar el update y luego se habilita nuevamente.
