@@ -89,6 +89,11 @@ En caso de error el atributo data no viene en la respuesta.
 
 # Ejercicio 3
 
+http://localhost:5000/palindrome
+Method : GET
+
+en caso de querer probar otra cadena puedes enviar el parametro string con la cadena
+
 # Ejercicio 4
 
 # Ejercicio 5

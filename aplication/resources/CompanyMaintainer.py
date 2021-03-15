@@ -105,14 +105,15 @@ class CompanyUpdateResource(Resource):
             validate = Utilities.validateStructureJson(data, CompanyUpdateResource.required_company_update)
             if not validate["error"]:
                 company_exists = Company.get_data(_id)
-                if company_exists is None:
+                print(company_exists)
+                if company_exists is not None:
                     if data["identification"] != company_exists["identification"]:
                         company_identification_exists = Company.get_data_by_identification(data["identification"])
                         if company_identification_exists is not None:
                             return Utilities.response_services(True,400,"There is already a company with the identification sent")
-                    update_company = Company.update_data(data)
+                    update_company = Company.update_data(_id, data)
                     if update_company :
-                        return Utilities.response_services(True,204,"Successfully updated company", update_company)
+                        return Utilities.response_services(True,200,"Successfully updated company", update_company)
                     else:
                         return Utilities.response_services(False,500,"An error occurred while updating the company")
                 else:

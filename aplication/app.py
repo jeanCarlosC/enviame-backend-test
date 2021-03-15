@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+import click
 from aplication.enviroment import env
 enviroment = env
 
@@ -16,6 +17,7 @@ from aplication.helpers.Utilities import Utilities
 
 # Import resources
 from aplication.resources.CompanyMaintainer import CompaniesViewResource, CompanyViewResource, CompanyCreateResource, CompanyUpdateResource, CompanyDeleteResource
+from aplication.resources.Scripts import loadFakerCompaniesResource, PalindromoScriptResource
 
 
 # Flask initialization
@@ -34,12 +36,16 @@ redis.init_app(app)
 #Initialization of api services
 api = Api(app)
 
-# Endpoints are defined
+# Endpoints company are defined
 api.add_resource(CompaniesViewResource, '/companies')
 api.add_resource(CompanyViewResource, '/company/<int:_id>')
 api.add_resource(CompanyCreateResource, '/company/create')
 api.add_resource(CompanyUpdateResource, '/company/update/<int:_id>')
 api.add_resource(CompanyDeleteResource, '/company/delete/<int:_id>')
+
+# Endpoints scripts
+api.add_resource(loadFakerCompaniesResource, '/scripts/fakeCompanies')
+api.add_resource(PalindromoScriptResource, '/scripts/palindrome')
 
 @app.route('/', methods=['GET'] )
 def welcome():
