@@ -124,7 +124,7 @@ En caso de querer probrar con otro límite de divisores enviar el parámetro "di
 
 # Ejercicio 7
 
-Para este ejercicio contruí la siguiente query:
+Para este ejercicio construí la siguiente query:
 
 SET SQL_SAFE_UPDATES = 0;
 update employees 
