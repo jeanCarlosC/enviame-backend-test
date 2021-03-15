@@ -37,6 +37,12 @@ Al ejecutar los contenedores docker tendremos disponible en los servicios para e
 
 URL development : http://localhost:5000/
 
+# Servicio para crear compañias faker
+http://localhost:5000/scripts/fakeCompanies
+Method : GET
+
+se debe enviar el parametro "quantity" que será la cantidad de compañias faker que creará 
+
 # Servicio para listar todas las compañias
 http://localhost:5000/companies
 Method : GET
