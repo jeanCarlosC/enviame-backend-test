@@ -18,6 +18,14 @@ Los datos de acceso de la base de datos (configurables en el archivo docker-comp
 * Root password : root12345
 * Base de datos : db
 
+La estructura de la respuesta para todos los servicios es la siguiente
+
+{
+    "success": True,
+    "message": "Successfully created company",
+    "data":{}
+}
+
 
 
 # Requerimientos para levantar el ambiente de desarrollo
@@ -38,27 +46,38 @@ En el archivo docker-compose se encuentra toda la configuración para el levanta
 Al ejecutar los contenedores docker tendremos disponible en los servicios para el CRUD del ejercicio 2
 
 URL development : http://localhost:5000/
+Authorization : 75b9e229639449dd3bea527d8ef608cf
 
 # Servicio para crear compañías faker
 http://localhost:5000/scripts/fakeCompanies
 Method : GET
+Headers : {
+	"Authorization": "75b9e229639449dd3bea527d8ef608cf"
+}
 
 se debe enviar el parámetro "quantity" que será la cantidad de compañías faker que creará 
 
 # Servicio para listar todas las compañías
 http://localhost:5000/companies
 Method : GET
+Headers : {
+	"Authorization": "75b9e229639449dd3bea527d8ef608cf"
+}
 
 # Servicio para obtener una compañía en base al id
 http://localhost:5000/company/1
 Method : GET
+Headers : {
+	"Authorization": "75b9e229639449dd3bea527d8ef608cf"
+}
 
 # Servicio para crear una compañía
 
 http://localhost:5000/company/create
 Method: POST
 Headers: {
-    "Content-Type":"application/json"
+    "Content-Type":"application/json",
+	"Authorization": "75b9e229639449dd3bea527d8ef608cf"
 }
 body : {
 	"identification":"1231234",
@@ -74,7 +93,8 @@ Los datos mail y phone son opcionales
 http://localhost:5000/company/update
 Method: PUT
 Headers: {
-    "Content-Type":"application/json"
+    "Content-Type":"application/json",
+	"Authorization": "75b9e229639449dd3bea527d8ef608cf"
 }
 body : {
 	"identification":"1231234",
@@ -88,12 +108,8 @@ Los datos son opcionales excepto la identificación
 
 http://localhost:5000/company/delete/1
 Method: DELETE
-La estructura de la respuesta para todos los servicios es la siguiente
-
-{
-    "success": True,
-    "message": "Successfully created company",
-    "data":{}
+Headers : {
+	"Authorization": "75b9e229639449dd3bea527d8ef608cf"
 }
 
 En caso de error el atributo data no viene en la respuesta.
@@ -102,6 +118,9 @@ En caso de error el atributo data no viene en la respuesta.
 
 http://localhost:5000/scripts/palindrome
 Method : GET
+Headers : {
+	"Authorization": "75b9e229639449dd3bea527d8ef608cf"
+}
 
 Servicio con el cual llamo el script para evaluar los substring palíndromos dentro de la cadena texto dada, en caso de querer probar otra cadena puedes enviar el parámetro "string" con el texto
 
@@ -109,12 +128,18 @@ Servicio con el cual llamo el script para evaluar los substring palíndromos den
 
 http://localhost:5000/scripts/createDelivery
 Method : POST
+Headers : {
+	"Authorization": "75b9e229639449dd3bea527d8ef608cf"
+}
 
 servicio el cual consume servicio de enviame y guarda la respuesta en una tabla log dentro del contenedor mysql
 
 # Ejercicio 5
 http://localhost:5000/scripts/DeliveryTime
 Method : GET
+Headers : {
+	"Authorization": "75b9e229639449dd3bea527d8ef608cf"
+}
 
 Servicio con el cual llamo el script para conocer el números de días de entrega de una compra online, basado en la secuencia fibonacci
 cada vez que se hace el consumo, se llama el script con un número aleatorio de 0 a 2000, en caso de que se quisiera evaluar una distancia especifica, podrías enviar el parámetro "km" con el número de kilómetros a evaluar.
@@ -122,6 +147,9 @@ cada vez que se hace el consumo, se llama el script con un número aleatorio de 
 # Ejercicio 6
 http://localhost:5000/scripts/FibonacciDivisors
 Method : GET
+Headers : {
+	"Authorization": "75b9e229639449dd3bea527d8ef608cf"
+}
 
 Servicio con el cual llamo el script para conocer el primer número de la secuencia fibonacci con mas de mil divisores.
 
